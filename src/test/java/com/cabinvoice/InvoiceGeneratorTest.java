@@ -35,4 +35,15 @@ public class InvoiceGeneratorTest {
         Assert.assertEquals(30,totalFare,0.0);
     }
 
+    @Test
+    public void givenRides_ReturnsInvoiceSummary(){
+        Ride[] rides = {
+                new Ride(0.1,1),
+                new Ride(2.0,5)
+        };
+        InvoiceSummary summary = invoiceGenerator.calculateFareWithSummary(rides);
+        InvoiceSummary invoiceSummary = new InvoiceSummary(2,30);
+        Assert.assertEquals(summary, invoiceSummary);
+    }
+
 }
