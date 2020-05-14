@@ -5,11 +5,15 @@ public class Ride {
     double totalFare=0.0;
     double distance;
     int time;
+    boolean isPremium;
 
 
-    Ride( double distance, int time){
+    Ride( double distance, int time, boolean ...isPremium){
         this.distance=distance;
         this.time=time;
+        if (isPremium.length>0){
+            this.isPremium=isPremium[0];
+        }
     }
 
 }
