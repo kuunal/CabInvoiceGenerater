@@ -19,4 +19,9 @@ public class InvoiceGeneratorTest {
         Assert.assertEquals(25,invoiceGenerator.calculateFare(2.0,5),0.0);
     }
 
+    @Test
+    public void givenMinimumDistanceAndTime_ReturnsMinimumFare(){
+        Assert.assertEquals(5,invoiceGenerator.calculateFare(0.1,1),0.0);
+    }
+
 }
