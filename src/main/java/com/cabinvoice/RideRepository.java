@@ -7,10 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RideRepository {
-    static HashMap<String, ArrayList<Ride>> map = new HashMap<>();
+    static HashMap<String, ArrayList<Ride>> map = null;
 
+    public RideRepository(){
+        this.map=new HashMap<>();
+    }
 
-    public static void addUser(String userId, Ride[] rides) {
+    public void addUser(String userId, Ride[] rides) {
         ArrayList<Ride> rideArrayList = map.get(userId);
         if(rideArrayList==null){
             map.put(userId,new ArrayList<Ride>(Arrays.asList(rides)));
@@ -20,7 +23,7 @@ public class RideRepository {
 
     }
 
-    public static Ride[] getRides(String userId) {
+    public Ride[] getRides(String userId) {
         return map.get(userId).toArray(new Ride[0]);
     }
 }

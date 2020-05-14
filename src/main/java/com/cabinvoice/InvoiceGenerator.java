@@ -7,6 +7,7 @@ public class InvoiceGenerator {
     private static final int PREMIUM_COST_PER_KILOMETER = 15;
     private static final int PREMIUM_COST_PER_MINUTE = 2;
     private static final int PREMIUM_MINIMUM_COST=20;
+    RideRepository rideRepository = new RideRepository();
 
 
     public double calculateFare(double distance, int time,Boolean ...isPremium) {
@@ -33,11 +34,11 @@ public class InvoiceGenerator {
     }
 
     public void addUser(String userId, Ride[] rides){
-        RideRepository.addUser(userId,rides);
+        rideRepository.addUser(userId,rides);
     }
 
     public InvoiceSummary getInvoiceSummary(String userId) {
-        return this.calculateFareWithSummary(RideRepository.getRides(userId));
+        return this.calculateFareWithSummary(rideRepository.getRides(userId));
     }
 
 }

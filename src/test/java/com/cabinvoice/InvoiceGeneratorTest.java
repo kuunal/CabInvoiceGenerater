@@ -20,7 +20,7 @@ public class InvoiceGeneratorTest {
     }
 
     @Test
-    public void givenMinimumDistanceAndTime_ReturnsMinimumFare(){
+    public void givenMinimumDistanceAndTime_ShouldReturnMinimumFare(){
         Assert.assertEquals(5,invoiceGenerator.calculateFare(0.1,1),0.0);
     }
 
@@ -36,7 +36,7 @@ public class InvoiceGeneratorTest {
     }
 
     @Test
-    public void givenRides_ReturnsInvoiceSummary(){
+    public void givenRides_ShouldReturnInvoiceSummary(){
         Ride[] rides = {
                 new Ride(0.1,1),
                 new Ride(2.0,5)
@@ -47,7 +47,7 @@ public class InvoiceGeneratorTest {
     }
 
     @Test
-    public void givenUserId_ReturnsInvoiceSummary(){
+    public void givenUserId_ShouldReturnsInvoiceSummary(){
         String userId="xyz";
         Ride[] rides = {
                 new Ride(0.1,1),
@@ -60,7 +60,7 @@ public class InvoiceGeneratorTest {
     }
 
     @Test
-    public void testPasses_ForGivenSameUserId_ReturnsInvoiceSummary(){
+    public void givenSameUserId_ShouldReturnsInvoiceSummary(){
         String userId="xyz";
         Ride[] rides = {
                 new Ride(2.0,5)
@@ -78,7 +78,7 @@ public class InvoiceGeneratorTest {
 
 
     @Test
-    public void testPasses_ForPremiumRide(){
+    public void givenPremiumRide_ShouldReturnPremiumFare(){
         String userId="xyz";
         Ride[] rides = {
                 new Ride(3,3,true)
@@ -90,7 +90,7 @@ public class InvoiceGeneratorTest {
     }
 
     @Test
-    public void testPasses_ForPremiumMinimumCost(){
+    public void givenPremiumRide_ShouldReturnPremiumMinimumCost(){
         String userId="xyz";
         Ride[] rides = {
                 new Ride(0.1,1,true)
