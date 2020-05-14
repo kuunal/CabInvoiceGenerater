@@ -14,9 +14,11 @@ public class InvoiceSummary {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         InvoiceSummary that = (InvoiceSummary) o;
         return noOfRides == that.noOfRides &&
-                totalFare == that.totalFare &&
-                averagePerFare == that.averagePerFare;
+                Double.compare(that.totalFare, totalFare) == 0 &&
+                Double.compare(that.averagePerFare, averagePerFare) == 0;
     }
 }

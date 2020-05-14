@@ -42,8 +42,40 @@ public class InvoiceGeneratorTest {
                 new Ride(2.0,5)
         };
         InvoiceSummary summary = invoiceGenerator.calculateFareWithSummary(rides);
-        InvoiceSummary invoiceSummary = new InvoiceSummary(2,30);
+        InvoiceSummary invoiceSummary = new InvoiceSummary(2,30.0);
         Assert.assertEquals(summary, invoiceSummary);
     }
+
+    @Test
+    public void givenUserId_ReturnsInvoiceSummary(){
+        String userId="xyz";
+        Ride[] rides = {
+                new Ride(0.1,1),
+                new Ride(2.0,5)
+        };
+    invoiceGenerator.addUser(userId,rides);
+    InvoiceSummary summary = invoiceGenerator.getInvoiceSummary(userId);
+    InvoiceSummary expectedSummary = new InvoiceSummary(2,30.0);
+    Assert.assertEquals(summary,expectedSummary);
+    }
+
+    @Test
+    public void testPasses_ForGivenSameUserId_ReturnsInvoiceSummary(){
+        String userId="xyz";
+        Ride[] rides = {
+                new Ride(2.0,5)
+        };
+        Ride[] rides1 = {
+                new Ride(0.1,1),
+                new Ride(2.0,5)
+        };
+        invoiceGenerator.addUser(userId,rides1);
+        invoiceGenerator.addUser(userId,rides);
+        InvoiceSummary summary = invoiceGenerator.getInvoiceSummary(userId);
+        InvoiceSummary expectedSummary = new InvoiceSummary(3,55);
+        Assert.assertEquals(summary,expectedSummary);
+    }
+
+
 
 }
